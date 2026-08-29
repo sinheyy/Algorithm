@@ -10,24 +10,12 @@ class Solution {
                 continue;
             }
             
-            // 소문자면
-            if(now >= 'a') {
-                if ((int)(now + n) > 'z') {
-                    answer.append((char)(97 + now + n - 123));
-                    continue;
-                }
-                
-                answer.append((char)(now + n));
+            if('a' <= now && now <= 'z') {
+                answer.append((char)('a' + (now + n - 'a') % 26));
                 continue;
             }
             
-            // 대문자면
-            if ((int)(now + n) > 90) {
-                answer.append((char)(65 + now + n - 91));
-                continue;
-            }
-            
-            answer.append((char)(now + n));
+            answer.append((char)('A' + (now + n - 'A') % 26));
         }
         
         return answer.toString();
